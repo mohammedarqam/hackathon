@@ -14,6 +14,24 @@ ion-grid{
 }
 .pBar{
     background-color: map-get($colors,primary);
-    height: 2px;
+    height: 6px;
+    border-top-right-radius: 10%;
+    border-bottom-right-radius: 10%;
+}
+.pBarCont{
+    background-color: #e8e9eb;
+    height: 6px;
+}
+.name{
+    display: inline-flex;
+    margin-right: 5%;
+    margin-left: 2%;
+    color: map-get($colors,primary);
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.perc{
+    display: inline-flex;
+
 }
 }

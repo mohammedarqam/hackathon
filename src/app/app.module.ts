@@ -7,6 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import * as firebase from 'firebase';
+import { RegisterPage } from '../pages/register/register';
+import { InstructionsPage } from '../pages/instructions/instructions';
+import { ResultsPage } from '../pages/results/results';
+import { ReviewPage } from '../pages/review/review';
 
 firebase.initializeApp({
   apiKey: "AIzaSyC-MuPFFSmsEX8WiR5PiNLea1UUuFEtyY4",
@@ -21,7 +25,11 @@ firebase.initializeApp({
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    RegisterPage,
+    InstructionsPage,
+    ResultsPage,
+    ReviewPage,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +38,11 @@ firebase.initializeApp({
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    RegisterPage,
+    InstructionsPage,
+    ResultsPage,
+    ReviewPage,
   ],
   providers: [
     StatusBar,

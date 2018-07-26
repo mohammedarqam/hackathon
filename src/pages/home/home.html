@@ -1,9 +1,18 @@
 <ion-content padding>
 <ion-header>
   <ion-navbar color="whiter" >
-    <ion-title>Arqam.Tech {{curIndex}}/{{allSlides}} </ion-title>
+    <ion-title>
+    <p class="name">Arqam.Tech </p>
+    <p class="perc">Question {{curIndex}} of {{allSlides}}</p>
+    
+    </ion-title>
+  <ion-buttons end>
+    <button color="primary" (click)="signOut()" clear ion-button >Exit</button>
+  </ion-buttons>
   </ion-navbar>
+  <div class="pBarCont">
   <div class="pBar" id="pBarId"></div>
+  </div>
 </ion-header>
 
 <ion-slides #slides (ionSlideDidChange)="slideChanged()" >
@@ -51,8 +60,9 @@
 
 <ion-footer>
   <ion-item>
-  <button ion-button item-start large (click)="slidePrev()"  outline>Previous</button>
-  <button ion-button item-end large (click)="slideNext()"  outline>Continue</button>
+  <button ion-button item-start large (click)="slidePrev()" *ngIf="curIndex != 1" outline>Previous</button>
+  <button ion-button item-end large (click)="slideNext()" *ngIf="curIndex != questions.length"  outline>Continue</button>
+  <button ion-button item-end large (click)="finish()" outline *ngIf="curIndex == questions.length">Finish</button>
   </ion-item>
 </ion-footer>
 

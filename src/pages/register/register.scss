@@ -1,3 +1,41 @@
 page-register {
+ion-input{
+    border-bottom: 1px map-get($colors,primary) solid;
+    // text-align: right !important;
+    font-size: 2em;
+}
+.labol{
+    font-size: 1.2em;
+    color : map-get($colors,primary);
+}
+.cont{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -70%);
+    transform: translate(-50%, -70%);
+    width: 50%;
+
+}
+.contB{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -70%);
+    transform: translate(-50%, -70%);
+    width: 50%;
+}
+
+.optns{
+    border: 1px solid map-get($colors,primary) !important ;
+    margin-bottom: 2% !important;
+}
+.branchBtn{
+    margin-top: 20%;
+}
+ion-list{
+    margin-top: 5% !important;
+    margin-bottom: 10% !important;
+}
 
 }
