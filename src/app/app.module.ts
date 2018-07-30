@@ -11,6 +11,7 @@ import { RegisterPage } from '../pages/register/register';
 import { InstructionsPage } from '../pages/instructions/instructions';
 import { ResultsPage } from '../pages/results/results';
 import { ReviewPage } from '../pages/review/review';
+import { WaitingPage } from '../pages/waiting/waiting';
 
 firebase.initializeApp({
   apiKey: "AIzaSyC-MuPFFSmsEX8WiR5PiNLea1UUuFEtyY4",
@@ -30,6 +31,7 @@ firebase.initializeApp({
     InstructionsPage,
     ResultsPage,
     ReviewPage,
+    WaitingPage,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ firebase.initializeApp({
     InstructionsPage,
     ResultsPage,
     ReviewPage,
+    WaitingPage,
   ],
   providers: [
     StatusBar,

@@ -1,41 +1,44 @@
 page-register {
-ion-input{
-    border-bottom: 1px map-get($colors,primary) solid;
-    // text-align: right !important;
-    font-size: 2em;
-}
-.labol{
-    font-size: 1.2em;
-    color : map-get($colors,primary);
-}
-.cont{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -70%);
-    transform: translate(-50%, -70%);
-    width: 50%;
 
-}
-.contB{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -70%);
-    transform: translate(-50%, -70%);
-    width: 50%;
-}
+    .rocket{
+        position: absolute;
+        top: 40%;
+        width: 40%;
+        -webkit-transform: translate(0, -60%);
+        transform: translate(0, -50%);
+    }
 
-.optns{
-    border: 1px solid map-get($colors,primary) !important ;
-    margin-bottom: 2% !important;
-}
-.branchBtn{
-    margin-top: 20%;
-}
-ion-list{
-    margin-top: 5% !important;
-    margin-bottom: 10% !important;
+    .signForm{
+        position: absolute;
+        top: 0;
+        left: 70%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, 0);
+        width: 35%;
+    }
+
+    ion-input {
+        border-bottom: 1px solid map-get($colors,primary);
+        font-size: 130%;
+    }
+
+    ion-select{
+        border-bottom: 1px solid map-get($colors,primary);
+        font-size: 130%;
+    }
+    .mainTitle{
+        position: absolute;
+        top: 10%;
+        left: 10%;
+        color : #ffffff;
+        font-size: 50px;
+    }
+    ion-label{
+        font-size: 110% !important ;
+        font-weight: 500;
+    }
+.news{
+    margin-bottom: 30px;
 }
 
 }

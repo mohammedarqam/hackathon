@@ -1,0 +1,37 @@
+page-waiting {
+
+    .rocket{
+        position: absolute;
+        top: 70%;
+        height: 70%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+.time{
+color: white;
+}
+#demo{
+font-size: 300%;
+color: white;
+}
+
+.card{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+
+}
+
+.cont{
+    background-color: #25aae2;
+}
+.signoutBtn{
+    float: right;
+}
+}

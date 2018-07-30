@@ -1,118 +1,87 @@
-<ion-content padding>
+<ion-content>
+<img class="rocket" src="assets/imgs/rock.jpg"/>
+<h1 class="mainTitle">Arqam.Tech</h1>
 
-<ion-slides #slides>
+    <div class="signForm" *ngIf="!signInT">
+        <h1>Register for Hackathon</h1>
+        <p>Register now and enter the hackathon once it starts.Already a user ?</p>
+        <button clear ion-button  (click)="slideNext()">Sign In</button>
+        <ion-item>
+            <ion-label stacked >Name</ion-label>
+            <ion-input type="text" autofocus  [(ngModel)]="Name" ></ion-input>
+        </ion-item>
 
-  <ion-slide>
-    <div class="cont">
-    <div class="labol">Enter Your Name</div>
-    <ion-input type="text"  [(ngModel)]="Name" ></ion-input>
+        <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="Email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>College</ion-label>
+            <ion-select [(ngModel)]="College">
+                <ion-option value="MVSR">MVSR</ion-option>
+                <ion-option value="TKR">TKR</ion-option>
+                <ion-option value="Gurunanak">Gurunanak</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Branch</ion-label>
+            <ion-select [(ngModel)]="Branch">
+              <ion-option  value="CSE">CSE</ion-option>
+              <ion-option  value="IT">IT</ion-option>
+              <ion-option  value="ECE">ECE</ion-option>
+              <ion-option  value="MECHANICAL">MECHANICAL</ion-option>
+              <ion-option  value="CIVIL">CIVIL</ion-option>
+              <ion-option  value="EEE">EEE</ion-option>
+              <ion-option  value="AUTOMOBILE">AUTOMOBILE</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Skill Level</ion-label>
+            <ion-select [(ngModel)]="Plevel">
+              <ion-option  value="I am a Beginner">I am a Beginner</ion-option>
+              <ion-option  value="I learned somthing at college">I learned somthing at college</ion-option>
+              <ion-option  value="I am a self taught Programmer">I am a self taught Programmer</ion-option>
+              <ion-option  value="I am an Expert">I am an Expert</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>Phone Number</ion-label>
+            <ion-input type="number"  [(ngModel)]="phoneNumber" ></ion-input>
+        </ion-item>
+        <ion-item class="news">
+            <ion-label color="primary"  >Subscribe to our Newsletter</ion-label>
+            <ion-checkbox [(ngModel)]="news"></ion-checkbox>
+        </ion-item>
+        <div id="recaptcha-container" class="rechat" ></div>
+
+        <button ion-button  class="news"
+        [disabled]="!Name||!Email||!College||!Branch||!Plevel||!phoneNumber||!news "
+        (click)="signUp(phoneNumber)" id="sign-in-button" class="signinBtn" >
+        Sign Up
+        </button>
     </div>
-    <button ion-button clear  *ngIf="Name" (click)="slideNext()" >Continue</button>
-  </ion-slide>
 
-  <ion-slide>
-      <div class="cont">
-      <div class="labol">Email</div>
-      <ion-input type="text"  [(ngModel)]="Email" ></ion-input>
-      </div>
-      <button ion-button clear  *ngIf="Email" (click)="slideNext()" >Continue</button>
-  </ion-slide>
-  
-  <ion-slide>
-      <div class="cont">
-      <div class="labol">College Name</div>
-      <ion-list no-lines radio-group [(ngModel)]="College">
-          <ion-item class="optns" >
-              <ion-label item-end>MVSR</ion-label>
-              <ion-radio item-start value="MVSR"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>TKR</ion-label>
-              <ion-radio item-start value="TKR"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>Guru Nanak</ion-label>
-              <ion-radio item-start value="GuruNanak"></ion-radio>
-          </ion-item>
-      </ion-list>
-      </div>
-      <button ion-button clear  *ngIf="College" (click)="slideNext()" >Continue</button>
-  </ion-slide>
+    <div class="signForm" *ngIf="signInT">
+        <h1>Sign In Hackathon</h1>
+        <p>Sign In to enter the hackathon once it starts.Not a user ?</p>
+        <button clear ion-button  (click)="slidePrev()">Sign Up</button>
 
-  <ion-slide>
-      <div class="contB">
-      <div class="labol">Branch</div>
-      <ion-list no-lines radio-group [(ngModel)]="Branch">
-          <ion-item class="optns" >
-              <ion-label item-end>CSE</ion-label>
-              <ion-radio item-start value="CSE"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>IT</ion-label>
-              <ion-radio item-start value="IT"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>ECE</ion-label>
-              <ion-radio item-start value="ECE"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>MECHANICAL</ion-label>
-              <ion-radio item-start value="MECHANICAL"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>CIVIL</ion-label>
-              <ion-radio item-start value="CIVIL"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>EEE</ion-label>
-              <ion-radio item-start value="EEE"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>AUTOMOBILE</ion-label>
-              <ion-radio item-start value="AUTOMOBILE"></ion-radio>
-          </ion-item>
-      </ion-list>
-      </div>
-      <button ion-button clear class="branchBtn"  *ngIf="Branch" (click)="slideNext()" >Continue</button>
-  </ion-slide>
+        <ion-item>
+            <ion-label stacked>Phone Number</ion-label>
+            <ion-input type="number"  [(ngModel)]="phoneNumberl" ></ion-input>
+        </ion-item>
 
-  <ion-slide>
-      <div class="cont">
-      <div class="labol">Programming Expertise</div>
-      <ion-list no-lines radio-group [(ngModel)]="Plevel">
-          <ion-item class="optns" >
-              <ion-label item-end>I am a Beginner</ion-label>
-              <ion-radio item-start value="I am a Beginner"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>I learned somthing at college</ion-label>
-              <ion-radio item-start value="I learned somthing at college"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>I am a self taught Programmer</ion-label>
-              <ion-radio item-start value="I am a self taught Programmer"></ion-radio>
-          </ion-item>
-          <ion-item class="optns" >
-              <ion-label item-end>I am an Expert</ion-label>
-              <ion-radio item-start value="I am an Expert"></ion-radio>
-          </ion-item>
-        </ion-list>
-      </div>
-      <button ion-button clear  *ngIf="Plevel" (click)="slideNext()" >Continue</button>
-  </ion-slide>
+        <div id="recaptcha-containerl" class="rechat" ></div>
 
-  <ion-slide>
-    <div class="cont">
-    <div class="labol">Phone Number</div>
-    <ion-input type="text"  [(ngModel)]="phoneNumber" ></ion-input>
+        <button ion-button  
+        [disabled]="!phoneNumberl"
+        (click)="signIn(phoneNumberl)" id="sign-in-button" class="signinBtn" >
+        Sign In
+        </button>
     </div>
-    <div id="recaptcha-container" class="rechat" ></div>
-    <button ion-button clear  *ngIf="phoneNumber" (click)="signIn(phoneNumber)" id="sign-in-button" class="signinBtn" >Continue</button>
-  </ion-slide>
-
-
-</ion-slides>
-
-
 
 </ion-content>
