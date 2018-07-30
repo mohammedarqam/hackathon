@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { HomePage } from '../home/home';
 import { WaitingPage } from '../waiting/waiting';
+import { LoginPage } from '../login/login';
 
 
 
@@ -20,10 +20,8 @@ export class RegisterPage {
   College : string;
   Branch : string;
   Plevel : string;
-  signInT : boolean = false;
-
+  news : boolean = true;
   public recaptchaVerifier:firebase.auth.RecaptchaVerifier;
-  public recaptchaVerifierl:firebase.auth.RecaptchaVerifier;
 
   constructor(
   public navCtrl: NavController, 
@@ -35,14 +33,29 @@ export class RegisterPage {
       }else{
     }
     });
-
   }
 
-  ionViewDidLoad(){
+  ionViewDidEnter(){
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
-    this.recaptchaVerifierl = new firebase.auth.RecaptchaVerifier('recaptcha-containerl');
   }
 
+
+  checkData(phoneNumber,email){
+    var phoneL = phoneNumber.toString().length;
+    if(phoneL===10){
+      
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+      {
+        this.signUp(phoneNumber);
+      }else{
+        console.log("Invalid");
+        this.presentAlert("Email Error","Try with a valid Email");
+      }
+
+    }else{
+      this.presentAlert("Phone Number Error","Try with a valid Phone Number");
+    }
+  }
 
 
   signUp(phoneNumber: number){
@@ -94,50 +107,22 @@ export class RegisterPage {
   
   }
 
-  signIn(phoneNumberl: number){
-    const appVerifier = this.recaptchaVerifierl;
-    const phoneNumberString = "+91" + phoneNumberl;
-    firebase.auth().signInWithPhoneNumber(phoneNumberString, appVerifier)
-      .then( confirmationResult => {
-        console.log("SMS sent");
+ 
 
-        let prompt = this.alertCtrl.create({
-        title: 'Enter the Confirmation code',
-        inputs: [{ name: 'confirmationCode', placeholder: 'Confirmation Code' }],
-        buttons: [
-          { text: 'Cancel',
-            handler: data => { console.log('Cancel clicked'); }
-          },
-          { text: 'Send',
-            handler: data => {
-              confirmationResult.confirm(data.confirmationCode)
-              .then(()=>{
-                this.navCtrl.setRoot(WaitingPage);
-              }).catch(function (error) {
-                alert("Wrong Verification Code");
-                this.navCtrl.setRoot(RegisterPage);
-              });
-            }
-          }
-        ]
-      }) ;
-      prompt.present();
-    }).catch(function (error) {
-      console.error("SMS not sent", error);
+
+
+
+  gtLogin() {
+    this.navCtrl.setRoot(LoginPage);
+  }
+  presentAlert(title,subtitle) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: subtitle,
+      buttons: ['Try Again']
     });
-  
+    alert.present();
   }
 
-
-
-
-
-  slidePrev() {
-    this.signInT = false;
-  }
-
-  slideNext() {
-    this.signInT = true;
-  }
 
 }

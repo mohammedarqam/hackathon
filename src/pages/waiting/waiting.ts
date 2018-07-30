@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import * as firebase from 'firebase';
+import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -14,6 +15,12 @@ export class WaitingPage {
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams) {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+      }else{
+        this.navCtrl.setRoot(RegisterPage);
+    }
+    });
   
   }
 
@@ -34,6 +41,11 @@ var x = setInterval(function() {
     }
 }, 1000);
 
+  }
+  signOut(){
+    firebase.auth().signOut().then(()=>{
+      this.navCtrl.setRoot(LoginPage);
+    })
   }
 
 }

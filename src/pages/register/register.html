@@ -2,10 +2,10 @@
 <img class="rocket" src="assets/imgs/rock.jpg"/>
 <h1 class="mainTitle">Arqam.Tech</h1>
 
-    <div class="signForm" *ngIf="!signInT">
+    <div class="signForm">
         <h1>Register for Hackathon</h1>
         <p>Register now and enter the hackathon once it starts.Already a user ?</p>
-        <button clear ion-button  (click)="slideNext()">Sign In</button>
+        <button clear ion-button  (click)="gtLogin()">Sign In</button>
         <ion-item>
             <ion-label stacked >Name</ion-label>
             <ion-input type="text" autofocus  [(ngModel)]="Name" ></ion-input>
@@ -50,7 +50,7 @@
 
         <ion-item>
             <ion-label stacked>Phone Number</ion-label>
-            <ion-input type="number"  [(ngModel)]="phoneNumber" ></ion-input>
+            <ion-input type="number" [(ngModel)]="phoneNumber" ></ion-input>
         </ion-item>
         <ion-item class="news">
             <ion-label color="primary"  >Subscribe to our Newsletter</ion-label>
@@ -60,28 +60,10 @@
 
         <button ion-button  class="news"
         [disabled]="!Name||!Email||!College||!Branch||!Plevel||!phoneNumber||!news "
-        (click)="signUp(phoneNumber)" id="sign-in-button" class="signinBtn" >
+        (click)="checkData(phoneNumber,Email)" id="sign-in-button" class="signinBtn" >
         Sign Up
         </button>
     </div>
 
-    <div class="signForm" *ngIf="signInT">
-        <h1>Sign In Hackathon</h1>
-        <p>Sign In to enter the hackathon once it starts.Not a user ?</p>
-        <button clear ion-button  (click)="slidePrev()">Sign Up</button>
-
-        <ion-item>
-            <ion-label stacked>Phone Number</ion-label>
-            <ion-input type="number"  [(ngModel)]="phoneNumberl" ></ion-input>
-        </ion-item>
-
-        <div id="recaptcha-containerl" class="rechat" ></div>
-
-        <button ion-button  
-        [disabled]="!phoneNumberl"
-        (click)="signIn(phoneNumberl)" id="sign-in-button" class="signinBtn" >
-        Sign In
-        </button>
-    </div>
 
 </ion-content>
