@@ -5,12 +5,12 @@
   
       <div class="signForm" >
           <h1>Sign In Hackathon</h1>
-          <p>Sign In to enter the hackathon once it starts.Not a user ?</p>
+          <p class="subT" >Sign In to enter the hackathon once it starts.Not a user ?</p>
           <button clear ion-button  (click)="gtSignUP()">Sign Up</button>
   
           <ion-item>
               <ion-label stacked>Phone Number</ion-label>
-              <ion-input type="number" autofocus  [(ngModel)]="phoneNumberl" ></ion-input>
+              <ion-input type="text" (keypress)="numberOnly($event)" autofocus  [(ngModel)]="phoneNumberl" ></ion-input>
           </ion-item>
   
           <div id="recaptcha-containerl" class="rechat" ></div>

@@ -72,7 +72,7 @@ export class RegisterPage {
           { text: 'Cancel',
             handler: data => { console.log('Cancel clicked'); }
           },
-          { text: 'Send',
+          { text: 'Verify',
             handler: data => {
               confirmationResult.confirm(data.confirmationCode)
               .then(()=>{
@@ -80,7 +80,12 @@ export class RegisterPage {
                   content: 'Please wait...'
                   });
                   loading.present();
-              
+                  firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
+                    var nums = itemSnap.numChildren();
+                    if(nums){
+                      this.presentAlert("User Exists","You are already Registered");
+                      this.signOut();
+                    }else{
                 firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).set({
                   Name : this.Name,
                   Email : this.Email,
@@ -89,10 +94,14 @@ export class RegisterPage {
                   Branch : this.Branch,
                   Plevel : this.Plevel
                 }).then(()=>{
+                  if(firebase.auth().currentUser){
                   this.navCtrl.setRoot(WaitingPage);
+                  }
                   loading.dismiss();
                 });
-              }).catch(function (error) {
+              }
+            })
+        }).catch(function (error) {
                 alert("Wrong Verification Code");
                 this.navCtrl.setRoot(RegisterPage);
               });
@@ -119,10 +128,23 @@ export class RegisterPage {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: subtitle,
-      buttons: ['Try Again']
+      buttons: ['Try Logging In']
     });
     alert.present();
   }
+  
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
 
+  }
+  signOut(){
+    firebase.auth().signOut().then(()=>{
+      this.navCtrl.setRoot(LoginPage);
+    })
+  }
 
 }

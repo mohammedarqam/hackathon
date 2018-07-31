@@ -11,15 +11,24 @@ page-sign-up-m {
         background-color: rgba(0, 0, 0, 0.55);
     }
     ion-input {
-        border-bottom: 1px solid map-get($colors,primary);
+        border-bottom: 1px solid map-get($colors,whiter);
         font-size: 130%;
     }
+    ion-label{
+        color: #ffffff;
+    }
     ion-select{
-        border-bottom: 1px solid map-get($colors,primary);
+        border-bottom: 1px solid map-get($colors,whiter);
         font-size: 130%;
     }
     .card{
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.8);
     
     }
+    .time{
+        text-align: center;
+        color: white;
+        }
 
 }

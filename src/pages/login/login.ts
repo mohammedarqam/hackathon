@@ -57,7 +57,7 @@ export class LoginPage {
           { text: 'Cancel',
             handler: data => { console.log('Cancel clicked'); }
           },
-          { text: 'Send',
+          { text: 'Verify',
             handler: data => {
               confirmationResult.confirm(data.confirmationCode)
               .then(()=>{
@@ -92,5 +92,13 @@ export class LoginPage {
 
   pAlert(title,subtitle) {
   }
-  
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+
+  }
+
 }

@@ -1,18 +1,70 @@
-<!--
-  Generated template for the ReRegisterMPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>reRegisterM</ion-title>
-  </ion-navbar>
-
+    <ion-navbar color="primary" >
+        <ion-title>
+            Arqam.Tech
+        </ion-title>
+    </ion-navbar>
 </ion-header>
+<ion-content>
+    <img class="rocket" src="assets/imgs/rock.jpg"/>
+    <ion-card>
+        <ion-card-content>
+    <h1 class="time" >Enter your Details</h1>
+    <p class="time dan">You have Signed In but not registered.Enter details to continue Hackathon </p>
+    <ion-item class="cont" >
+        <ion-label stacked >Name</ion-label>
+        <ion-input type="text" class="time" autofocus  [(ngModel)]="Name" ></ion-input>
+    </ion-item>
+
+    <ion-item class="cont" >
+        <ion-label stacked>Email</ion-label>
+        <ion-input type="email" class="time" [(ngModel)]="Email"></ion-input>
+    </ion-item>
+
+    <ion-item class="cont" >
+        <ion-label stacked>College</ion-label>
+        <ion-select [(ngModel)]="College" class="time">
+            <ion-option value="MVSR">MVSR</ion-option>
+            <ion-option value="TKR">TKR</ion-option>
+            <ion-option value="Gurunanak">Gurunanak</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item class="cont" >
+        <ion-label stacked>Branch</ion-label>
+        <ion-select [(ngModel)]="Branch" class="time">
+          <ion-option  value="CSE">CSE</ion-option>
+          <ion-option  value="IT">IT</ion-option>
+          <ion-option  value="ECE">ECE</ion-option>
+          <ion-option  value="MECHANICAL">MECHANICAL</ion-option>
+          <ion-option  value="CIVIL">CIVIL</ion-option>
+          <ion-option  value="EEE">EEE</ion-option>
+          <ion-option  value="AUTOMOBILE">AUTOMOBILE</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item class="cont" >
+        <ion-label stacked>Skill Level</ion-label>
+        <ion-select [(ngModel)]="Plevel" class="time">
+          <ion-option  value="I am a Beginner">I am a Beginner</ion-option>
+          <ion-option  value="I learned somthing at college">I learned somthing at college</ion-option>
+          <ion-option  value="I am a self taught Programmer">I am a self taught Programmer</ion-option>
+          <ion-option  value="I am an Expert">I am an Expert</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item class="cont">
+        <ion-label  class="time"  >Subscribe to our Newsletter</ion-label>
+        <ion-checkbox [(ngModel)]="news"></ion-checkbox>
+    </ion-item>
+
+    <button ion-button [disabled]="!Name||!Email||!College||!Branch||!Plevel||!news" (click)="checkData()" >
+    Continue to Hackathon
+    </button>
 
 
-<ion-content padding>
 
+
+</ion-card-content>
+</ion-card>
 </ion-content>

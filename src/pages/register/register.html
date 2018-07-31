@@ -4,7 +4,7 @@
 
     <div class="signForm">
         <h1>Register for Hackathon</h1>
-        <p>Register now and enter the hackathon once it starts.Already a user ?</p>
+        <p class="subT" >Register now and enter the hackathon once it starts.Already a user ?</p>
         <button clear ion-button  (click)="gtLogin()">Sign In</button>
         <ion-item>
             <ion-label stacked >Name</ion-label>
@@ -50,7 +50,7 @@
 
         <ion-item>
             <ion-label stacked>Phone Number</ion-label>
-            <ion-input type="number" [(ngModel)]="phoneNumber" ></ion-input>
+            <ion-input type="text" (keypress)="numberOnly($event)" [(ngModel)]="phoneNumber" ></ion-input>
         </ion-item>
         <ion-item class="news">
             <ion-label color="primary"  >Subscribe to our Newsletter</ion-label>

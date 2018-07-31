@@ -13,6 +13,7 @@ import { ReRegisterPage } from '../re-register/re-register';
 export class WaitingPage {
   
   userRef = firebase.database().ref("Users/");
+  Name : string;
 
   constructor(
   public navCtrl: NavController, 
@@ -31,7 +32,7 @@ export class WaitingPage {
     this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
       var nums = itemSnap.numChildren();
       if(nums){
-
+        this.Name = itemSnap.val().Name;
       }else{
         this.navCtrl.setRoot(ReRegisterPage);
       }

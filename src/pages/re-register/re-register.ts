@@ -54,6 +54,7 @@ export class ReRegisterPage {
       Email : this.Email,
       College : this.College,
       Branch : this.Branch,
+      PhoneNo : firebase.auth().currentUser.phoneNumber,
       Plevel : this.Plevel
     }).then(()=>{
       this.navCtrl.setRoot(WaitingPage);

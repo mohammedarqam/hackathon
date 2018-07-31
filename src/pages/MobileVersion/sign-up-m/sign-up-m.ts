@@ -31,7 +31,7 @@ export class SignUpMPage {
       }else{
     }
     });
-  }
+   }
 
   ionViewDidEnter(){
     this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');

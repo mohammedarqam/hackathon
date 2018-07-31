@@ -11,19 +11,19 @@ import { SignUpMPage } from '../sign-up-m/sign-up-m';
 })
 export class LoginMPage {
 
-  // public recaptchaVerifierl:firebase.auth.RecaptchaVerifier;
+  public recaptchaVerifierl:firebase.auth.RecaptchaVerifier;
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams,
   public alertCtrl:AlertController) {
-  /*  firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.navCtrl.setRoot(WaitingMPage);
       }else{
     }
     });
-  */ }
-/*
+   }
+
   ionViewDidLoad(){
     this.recaptchaVerifierl = new firebase.auth.RecaptchaVerifier('recaptcha-containerl');
   }
@@ -88,4 +88,4 @@ export class LoginMPage {
 
   pAlert(title,subtitle) {
   }
-*/}
+}

@@ -1,31 +1,41 @@
-<ion-content padding > 
+<ion-header>
+    <ion-navbar color="primary" >
+        <ion-title>
+            Arqam.Tech
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content> 
     <img class="rocket" src="assets/imgs/rock.jpg"/>
-    <div class="signForm" class="cont" >
-        <h1 >Register for Hackathon</h1>
-        <p>Register now and enter the hackathon once it starts.Already a user ?</p>
-        <button clear ion-button  (click)="gtLogin()">Sign In</button>
-        <ion-item class="cont">
+
+    <ion-card>
+        <ion-card-content>
+
+        <h1 class="time" >Register for Hackathon</h1>
+        <p class="time">Register now and enter the hackathon once it starts.Already a user ?</p>
+        <button clear color="whiter" ion-button  (click)="gtLogin()">Sign In</button>
+        <ion-item class="cont"  >
             <ion-label stacked >Name</ion-label>
-            <ion-input type="text" autofocus  [(ngModel)]="Name" ></ion-input>
+            <ion-input class="time" type="text" autofocus  [(ngModel)]="Name" ></ion-input>
         </ion-item>
 
-        <ion-item class="cont">
+        <ion-item class="cont"  >
             <ion-label stacked>Email</ion-label>
-            <ion-input type="email" [(ngModel)]="Email"></ion-input>
+            <ion-input type="email" class="time" [(ngModel)]="Email"></ion-input>
         </ion-item>
 
-        <ion-item class="cont">
+        <ion-item class="cont"  >
             <ion-label stacked>College</ion-label>
-            <ion-select [(ngModel)]="College">
+            <ion-select [(ngModel)]="College" class="time" >
                 <ion-option value="MVSR">MVSR</ion-option>
                 <ion-option value="TKR">TKR</ion-option>
                 <ion-option value="Gurunanak">Gurunanak</ion-option>
             </ion-select>
         </ion-item>
 
-        <ion-item class="cont">
+        <ion-item class="cont"  >
             <ion-label stacked>Branch</ion-label>
-            <ion-select [(ngModel)]="Branch">
+            <ion-select [(ngModel)]="Branch" class="time" >
               <ion-option  value="CSE">CSE</ion-option>
               <ion-option  value="IT">IT</ion-option>
               <ion-option  value="ECE">ECE</ion-option>
@@ -36,9 +46,9 @@
             </ion-select>
         </ion-item>
 
-        <ion-item class="cont">
+        <ion-item class="cont"  >
             <ion-label stacked>Skill Level</ion-label>
-            <ion-select [(ngModel)]="Plevel">
+            <ion-select [(ngModel)]="Plevel" class="time" >
               <ion-option  value="I am a Beginner">I am a Beginner</ion-option>
               <ion-option  value="I learned somthing at college">I learned somthing at college</ion-option>
               <ion-option  value="I am a self taught Programmer">I am a self taught Programmer</ion-option>
@@ -46,21 +56,21 @@
             </ion-select>
         </ion-item>
 
-        <ion-item class="cont">
+        <ion-item class="cont"  >
             <ion-label stacked>Phone Number</ion-label>
-            <ion-input type="number" [(ngModel)]="phoneNumber" ></ion-input>
+            <ion-input type="number" [(ngModel)]="phoneNumber" class="time" ></ion-input>
         </ion-item>
-        <ion-item class="cont">
-            <ion-label color="primary"  >Subscribe to our Newsletter</ion-label>
-            <ion-checkbox [(ngModel)]="news"></ion-checkbox>
+        <ion-item class="cont"  >
+            <ion-label color="primary" class="time"  >Subscribe to our Newsletter</ion-label>
+            <ion-checkbox [(ngModel)]="news" class="time" ></ion-checkbox>
         </ion-item>
         <div id="recaptcha-container" class="rechat" ></div>
 
-        <button ion-button  class="cont"
+        <button ion-button  
         [disabled]="!Name||!Email||!College||!Branch||!Plevel||!phoneNumber||!news "
         (click)="checkData(phoneNumber)" id="sign-in-button" class="signinBtn" >
         Sign Up
         </button>
-    </div>
-
+</ion-card-content>
+</ion-card>
 </ion-content>
