@@ -13,7 +13,7 @@
 
         <h1 class="time" >Register for Hackathon</h1>
         <p class="time">Register now and enter the hackathon once it starts.Already a user ?</p>
-        <button clear color="whiter" ion-button  (click)="gtLogin()">Sign In</button>
+        <button clear color="primary" ion-button  (click)="gtLogin()">Sign In</button>
         <ion-item class="cont"  >
             <ion-label stacked >Name</ion-label>
             <ion-input class="time" type="text" autofocus  [(ngModel)]="Name" ></ion-input>
@@ -58,7 +58,7 @@
 
         <ion-item class="cont"  >
             <ion-label stacked>Phone Number</ion-label>
-            <ion-input type="number" [(ngModel)]="phoneNumber" class="time" ></ion-input>
+            <ion-input type="text" (keypress)="numberOnly($event)" [(ngModel)]="phoneNumber" class="time" ></ion-input>
         </ion-item>
         <ion-item class="cont"  >
             <ion-label color="primary" class="time"  >Subscribe to our Newsletter</ion-label>

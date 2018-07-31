@@ -13,11 +13,11 @@
         <h1 class="time" >Sign In Hackathon</h1>
         <p class="time" >Sign In to enter the hackathon once it starts.</p>
         <p class="time">Not a user ?</p>
-        <button clear ion-button color="whiter" (click)="gtSignUP()">Sign Up</button>
+        <button clear ion-button color="primary" (click)="gtSignUP()">Sign Up</button>
 
         <ion-item class="cont" >
             <ion-label stacked  >Phone Number</ion-label>
-            <ion-input  type="number"  autofocus  [(ngModel)]="phoneNumberl" ></ion-input>
+            <ion-input  type="text" (keypress)="numberOnly($event)" class="time"  autofocus  [(ngModel)]="phoneNumberl" ></ion-input>
         </ion-item>
 
         <div id="recaptcha-containerl" class="rechat" ></div>
