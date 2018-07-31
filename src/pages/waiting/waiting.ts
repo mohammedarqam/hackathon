@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import * as firebase from 'firebase';
 import { LoginPage } from '../login/login';
+import { ReRegisterPage } from '../re-register/re-register';
 
 @IonicPage()
 @Component({
@@ -11,6 +12,7 @@ import { LoginPage } from '../login/login';
 })
 export class WaitingPage {
   
+  userRef = firebase.database().ref("Users/");
 
   constructor(
   public navCtrl: NavController, 
@@ -21,8 +23,21 @@ export class WaitingPage {
         this.navCtrl.setRoot(RegisterPage);
     }
     });
-  
+    this.getUser();
   }
+
+
+  getUser(){
+    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
+      var nums = itemSnap.numChildren();
+      if(nums){
+
+      }else{
+        this.navCtrl.setRoot(ReRegisterPage);
+      }
+    })
+  }
+
 
   ionViewDidEnter() {
 var countDownDate = new Date("Aug 5, 2018 10:00:00").getTime();

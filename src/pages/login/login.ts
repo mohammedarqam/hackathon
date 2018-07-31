@@ -15,7 +15,7 @@ import { RegisterPage } from '../register/register';
 })
 export class LoginPage {
 
-  public recaptchaVerifier:firebase.auth.RecaptchaVerifier;
+  public recaptchaVerifierl:firebase.auth.RecaptchaVerifier;
   constructor(
   public navCtrl: NavController, 
   public navParams: NavParams,
@@ -29,7 +29,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad(){
-    this.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+    this.recaptchaVerifierl = new firebase.auth.RecaptchaVerifier('recaptcha-containerl');
   }
 
   checkData(phoneNumber){
@@ -37,14 +37,14 @@ export class LoginPage {
   if(numL===10){
     this.signIn(phoneNumber);
   }else{
-    this.presentAlert("Phone Number Error","Try with a valid Phone Number");
+    this.pAlert("Phone Number Error","Try with a valid Phone Number");
   }
 }
 
   
 
   signIn(phoneNumber: number){
-    const appVerifier = this.recaptchaVerifier;
+    const appVerifier = this.recaptchaVerifierl;
     const phoneNumberString = "+91" + phoneNumber;
     firebase.auth().signInWithPhoneNumber(phoneNumberString, appVerifier)
       .then( confirmationResult => {
@@ -73,7 +73,13 @@ export class LoginPage {
       }) ;
       prompt.present();
     }).catch(function (error) {
-      console.error("SMS not sent", error);
+      let alert = this.alertCtrl.create({
+        title: "SMS not Sent",
+        subTitle: error.message,
+        buttons: ['Try Again']
+      });
+      alert.present();
+  
     });
 
 
@@ -84,13 +90,7 @@ export class LoginPage {
     this.navCtrl.setRoot(RegisterPage);
   }
 
-  presentAlert(title,subtitle) {
-    let alert = this.alertCtrl.create({
-      title: title,
-      subTitle: subtitle,
-      buttons: ['Try Again']
-    });
-    alert.present();
+  pAlert(title,subtitle) {
   }
   
 }

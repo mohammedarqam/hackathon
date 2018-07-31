@@ -40,11 +40,11 @@ export class RegisterPage {
   }
 
 
-  checkData(phoneNumber,email){
+  checkData(phoneNumber){
     var phoneL = phoneNumber.toString().length;
     if(phoneL===10){
       
-      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.Email))
       {
         this.signUp(phoneNumber);
       }else{

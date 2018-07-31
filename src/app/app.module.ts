@@ -13,6 +13,8 @@ import { ResultsPage } from '../pages/results/results';
 import { ReviewPage } from '../pages/review/review';
 import { WaitingPage } from '../pages/waiting/waiting';
 import { LoginPage } from '../pages/login/login';
+import { MobileLimitPage } from '../pages/mobile-limit/mobile-limit';
+import { ReRegisterPage } from '../pages/re-register/re-register';
 
 firebase.initializeApp({
   apiKey: "AIzaSyC-MuPFFSmsEX8WiR5PiNLea1UUuFEtyY4",
@@ -34,6 +36,8 @@ firebase.initializeApp({
     ReviewPage,
     WaitingPage,
     LoginPage,
+    MobileLimitPage,
+    ReRegisterPage,
   ],
   imports: [
     BrowserModule,
@@ -49,10 +53,11 @@ firebase.initializeApp({
     ReviewPage,
     WaitingPage,
     LoginPage,
+    MobileLimitPage,
+    ReRegisterPage,
   ],
   providers: [
     StatusBar,
-    SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
