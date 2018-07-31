@@ -1,0 +1,66 @@
+<ion-content padding > 
+    <img class="rocket" src="assets/imgs/rock.jpg"/>
+    <div class="signForm" class="cont" >
+        <h1 >Register for Hackathon</h1>
+        <p>Register now and enter the hackathon once it starts.Already a user ?</p>
+        <button clear ion-button  (click)="gtLogin()">Sign In</button>
+        <ion-item class="cont">
+            <ion-label stacked >Name</ion-label>
+            <ion-input type="text" autofocus  [(ngModel)]="Name" ></ion-input>
+        </ion-item>
+
+        <ion-item class="cont">
+            <ion-label stacked>Email</ion-label>
+            <ion-input type="email" [(ngModel)]="Email"></ion-input>
+        </ion-item>
+
+        <ion-item class="cont">
+            <ion-label stacked>College</ion-label>
+            <ion-select [(ngModel)]="College">
+                <ion-option value="MVSR">MVSR</ion-option>
+                <ion-option value="TKR">TKR</ion-option>
+                <ion-option value="Gurunanak">Gurunanak</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item class="cont">
+            <ion-label stacked>Branch</ion-label>
+            <ion-select [(ngModel)]="Branch">
+              <ion-option  value="CSE">CSE</ion-option>
+              <ion-option  value="IT">IT</ion-option>
+              <ion-option  value="ECE">ECE</ion-option>
+              <ion-option  value="MECHANICAL">MECHANICAL</ion-option>
+              <ion-option  value="CIVIL">CIVIL</ion-option>
+              <ion-option  value="EEE">EEE</ion-option>
+              <ion-option  value="AUTOMOBILE">AUTOMOBILE</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item class="cont">
+            <ion-label stacked>Skill Level</ion-label>
+            <ion-select [(ngModel)]="Plevel">
+              <ion-option  value="I am a Beginner">I am a Beginner</ion-option>
+              <ion-option  value="I learned somthing at college">I learned somthing at college</ion-option>
+              <ion-option  value="I am a self taught Programmer">I am a self taught Programmer</ion-option>
+              <ion-option  value="I am an Expert">I am an Expert</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item class="cont">
+            <ion-label stacked>Phone Number</ion-label>
+            <ion-input type="number" [(ngModel)]="phoneNumber" ></ion-input>
+        </ion-item>
+        <ion-item class="cont">
+            <ion-label color="primary"  >Subscribe to our Newsletter</ion-label>
+            <ion-checkbox [(ngModel)]="news"></ion-checkbox>
+        </ion-item>
+        <div id="recaptcha-container" class="rechat" ></div>
+
+        <button ion-button  class="cont"
+        [disabled]="!Name||!Email||!College||!Branch||!Plevel||!phoneNumber||!news "
+        (click)="checkData(phoneNumber)" id="sign-in-button" class="signinBtn" >
+        Sign Up
+        </button>
+    </div>
+
+</ion-content>

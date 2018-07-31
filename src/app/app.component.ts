@@ -2,20 +2,24 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import { RegisterPage } from '../pages/register/register';
-import { MobileLimitPage } from '../pages/mobile-limit/mobile-limit';
-import { ReRegisterPage } from '../pages/re-register/re-register';
 import { LoginPage } from '../pages/login/login';
+import { LoginMPage } from '../pages/MobileVersion/login-m/login-m';
+import { SignUpMPage } from '../pages/MobileVersion/sign-up-m/sign-up-m';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any;
 
-  constructor(platform: Platform, statusBar: StatusBar) {
+  constructor(platform: Platform,  public plt : Platform,statusBar: StatusBar) {
     platform.ready().then(() => {
-      
+      if(this.plt.is("core")){
+        this.rootPage = LoginPage;
+      }else{
+        this.rootPage = LoginMPage;
+      }
+
       statusBar.styleDefault();
     });
   }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the MobileLimitPage page.
+ * Generated class for the ReRegisterMPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-mobile-limit',
-  templateUrl: 'mobile-limit.html',
+  selector: 'page-re-register-m',
+  templateUrl: 're-register-m.html',
 })
-export class MobileLimitPage {
+export class ReRegisterMPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MobileLimitPage');
+    console.log('ionViewDidLoad ReRegisterMPage');
   }
 
 }

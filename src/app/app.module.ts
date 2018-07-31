@@ -13,8 +13,11 @@ import { ResultsPage } from '../pages/results/results';
 import { ReviewPage } from '../pages/review/review';
 import { WaitingPage } from '../pages/waiting/waiting';
 import { LoginPage } from '../pages/login/login';
-import { MobileLimitPage } from '../pages/mobile-limit/mobile-limit';
 import { ReRegisterPage } from '../pages/re-register/re-register';
+import { LoginMPage } from '../pages/MobileVersion/login-m/login-m';
+import { SignUpMPage } from '../pages/MobileVersion/sign-up-m/sign-up-m';
+import { ReRegisterMPage } from '../pages/MobileVersion/re-register-m/re-register-m';
+import { WaitingMPage } from '../pages/MobileVersion/waiting-m/waiting-m';
 
 firebase.initializeApp({
   apiKey: "AIzaSyC-MuPFFSmsEX8WiR5PiNLea1UUuFEtyY4",
@@ -36,12 +39,17 @@ firebase.initializeApp({
     ReviewPage,
     WaitingPage,
     LoginPage,
-    MobileLimitPage,
     ReRegisterPage,
+    LoginMPage,
+    SignUpMPage,
+    ReRegisterMPage,
+    WaitingMPage,
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      scrollAssist: false
+    }),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,8 +61,11 @@ firebase.initializeApp({
     ReviewPage,
     WaitingPage,
     LoginPage,
-    MobileLimitPage,
     ReRegisterPage,
+    LoginMPage,
+    SignUpMPage,
+    ReRegisterMPage,
+    WaitingMPage,
   ],
   providers: [
     StatusBar,

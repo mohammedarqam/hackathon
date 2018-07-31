@@ -1,0 +1,25 @@
+page-sign-up-m {
+
+    .rocket{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .cont{
+        background-color: rgba(0, 0, 0, 0.55);
+    }
+    ion-input {
+        border-bottom: 1px solid map-get($colors,primary);
+        font-size: 130%;
+    }
+    ion-select{
+        border-bottom: 1px solid map-get($colors,primary);
+        font-size: 130%;
+    }
+    .card{
+    
+    }
+
+}
