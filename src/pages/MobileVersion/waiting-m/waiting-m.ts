@@ -15,6 +15,7 @@ import { LoginMPage } from '../login-m/login-m';
 export class WaitingMPage {
 
   userRef = firebase.database().ref("Users/");
+  Name : string;
 
   constructor(
   public navCtrl: NavController, 
@@ -33,7 +34,7 @@ export class WaitingMPage {
     this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
       var nums = itemSnap.numChildren();
       if(nums){
-
+        this.Name = itemSnap.val().Name;
       }else{
         this.navCtrl.setRoot(ReRegisterMPage);
       }

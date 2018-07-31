@@ -85,6 +85,7 @@ export class RegisterPage {
                     if(nums){
                       this.presentAlert("User Exists","You are already Registered");
                       this.signOut();
+                      loading.dismiss();
                     }else{
                 firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).set({
                   Name : this.Name,
