@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import * as firebase from'firebase';
 import { WaitingMPage } from '../waiting-m/waiting-m';
-
+import moment from 'moment';
 
 
 
@@ -19,6 +19,7 @@ export class ReRegisterMPage {
   College : string;
   Branch : string;
   Plevel : string;
+  Year : string;
   news : boolean = true;
 
 
@@ -56,8 +57,11 @@ sendData(){
     College : this.College,
     Branch : this.Branch,
     PhoneNo : firebase.auth().currentUser.phoneNumber,
-    Plevel : this.Plevel
-  }).then(()=>{
+    Plevel : this.Plevel,
+    Year : this.Year,
+    Platform : 'Mobile',
+    TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
+}).then(()=>{
     this.navCtrl.setRoot(WaitingMPage);
     loading.dismiss();
   });

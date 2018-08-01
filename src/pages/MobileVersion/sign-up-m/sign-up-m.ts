@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, AlertController
 import { LoginMPage } from '../login-m/login-m';
 import { WaitingMPage } from '../waiting-m/waiting-m';
 import * as firebase from 'firebase';
+import moment from 'moment';
 
 
 @IonicPage()
@@ -18,6 +19,7 @@ export class SignUpMPage {
   College : string;
   Branch : string;
   Plevel : string;
+  Year : string;
   news : boolean = true;
   public recaptchaVerifier:firebase.auth.RecaptchaVerifier;
 
@@ -91,7 +93,10 @@ export class SignUpMPage {
                   PhoneNo : phoneNumber,
                   College : this.College,
                   Branch : this.Branch,
-                  Plevel : this.Plevel
+                  Plevel : this.Plevel,
+                  Year : this.Year,
+                  Platform : 'Mobile',
+                  TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
                 }).then(()=>{
                   if(firebase.auth().currentUser){
                   this.navCtrl.setRoot(WaitingMPage);

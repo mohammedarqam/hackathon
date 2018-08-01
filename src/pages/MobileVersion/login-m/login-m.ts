@@ -53,7 +53,7 @@ export class LoginMPage {
           { text: 'Cancel',
             handler: data => { console.log('Cancel clicked'); }
           },
-          { text: 'Send',
+          { text: 'Verify',
             handler: data => {
               confirmationResult.confirm(data.confirmationCode)
               .then(()=>{

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, LoadingController, AlertController
 import * as firebase from 'firebase';
 import { WaitingPage } from '../waiting/waiting';
 import { LoginPage } from '../login/login';
+import moment from 'moment';
 
 
 
@@ -20,6 +21,7 @@ export class RegisterPage {
   College : string;
   Branch : string;
   Plevel : string;
+  Year : string;
   news : boolean = true;
   public recaptchaVerifier:firebase.auth.RecaptchaVerifier;
 
@@ -93,7 +95,10 @@ export class RegisterPage {
                   PhoneNo : phoneNumber,
                   College : this.College,
                   Branch : this.Branch,
-                  Plevel : this.Plevel
+                  Plevel : this.Plevel,
+                  Year : this.Year,
+                  Platform : 'Desktop',
+                  TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
                 }).then(()=>{
                   if(firebase.auth().currentUser){
                   this.navCtrl.setRoot(WaitingPage);

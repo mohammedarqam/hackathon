@@ -17,13 +17,20 @@
   
           <ion-item>
               <ion-label stacked>College</ion-label>
-              <ion-select [(ngModel)]="College">
-                  <ion-option value="MVSR">MVSR</ion-option>
-                  <ion-option value="TKR">TKR</ion-option>
-                  <ion-option value="Gurunanak">Gurunanak</ion-option>
-              </ion-select>
-          </ion-item>
-  
+              <ion-input type="text" [(ngModel)]="College"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label stacked>Year</ion-label>
+                <ion-select [(ngModel)]="Year">
+                    <ion-option value="1 Year">1 Year</ion-option>
+                    <ion-option value="2 Year">2 Year</ion-option>
+                    <ion-option value="3 Year">3 Year</ion-option>
+                    <ion-option value="4 Year">4 Year</ion-option>
+                    <ion-option value="Completed College">Completed College</ion-option>
+                </ion-select>
+            </ion-item>
+    
           <ion-item>
               <ion-label stacked>Branch</ion-label>
               <ion-select [(ngModel)]="Branch">

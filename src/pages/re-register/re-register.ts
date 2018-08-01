@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import * as firebase from'firebase';
 import { WaitingPage } from '../waiting/waiting';
+import moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -15,6 +16,7 @@ export class ReRegisterPage {
   College : string;
   Branch : string;
   Plevel : string;
+  Year : string;
   news : boolean = true;
 
 
@@ -53,9 +55,12 @@ export class ReRegisterPage {
       Name : this.Name,
       Email : this.Email,
       College : this.College,
+      Year : this.Year,
       Branch : this.Branch,
       PhoneNo : firebase.auth().currentUser.phoneNumber,
-      Plevel : this.Plevel
+      Plevel : this.Plevel,
+      Platform : 'Desktop',
+      TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
     }).then(()=>{
       this.navCtrl.setRoot(WaitingPage);
       loading.dismiss();
