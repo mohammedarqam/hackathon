@@ -7,6 +7,7 @@ import { InstructionsMPage } from '../pages/instructions-m/instructions-m';
 import { RegisterPage } from '../pages/register/register';
 import { ResultsMPage } from '../pages/results-m/results-m';
 import { PaymentsMPage } from '../pages/payments-m/payments-m';
+import { HomeMPage } from '../pages/home-m/home-m';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,7 +20,7 @@ export class MyApp {
       if(this.plt.is("core")){
         this.rootPage = RegisterPage;
       }else{
-        this.rootPage = PaymentsMPage;
+        this.rootPage = HomeMPage;
       }
 
       statusBar.styleDefault();

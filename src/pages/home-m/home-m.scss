@@ -1,3 +1,13 @@
 page-home-m {
-
+    .pBar{
+        background-color: map-get($colors,primary);
+        height: 6px;
+        border-top-right-radius: 10%;
+        border-bottom-right-radius: 10%;
+    }
+    .pBarCont{
+        background-color: #e8e9eb;
+        height: 6px;
+    }
+    
 }

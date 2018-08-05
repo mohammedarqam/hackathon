@@ -22,6 +22,7 @@ import { PaymentsPage } from '../pages/payments/payments';
 import { InstructionsMPage } from '../pages/instructions-m/instructions-m';
 import { ResultsMPage } from '../pages/results-m/results-m';
 import { PaymentsMPage } from '../pages/payments-m/payments-m';
+import { HomeMPage } from '../pages/home-m/home-m';
 
 firebase.initializeApp({
   apiKey: "AIzaSyC-MuPFFSmsEX8WiR5PiNLea1UUuFEtyY4",
@@ -51,7 +52,8 @@ firebase.initializeApp({
     PaymentsPage,
     InstructionsMPage,
     ResultsMPage,
-    PaymentsMPage
+    PaymentsMPage,
+    HomeMPage,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,8 @@ firebase.initializeApp({
     PaymentsPage,
     InstructionsMPage,
     ResultsMPage,
-    PaymentsMPage
+    PaymentsMPage,
+    HomeMPage,
   ],
   providers: [
     StatusBar,

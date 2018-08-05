@@ -43,7 +43,7 @@ export class WaitingMPage {
 
 
   ionViewDidEnter() {
-var countDownDate = new Date("Aug 5, 2018 13:00:00").getTime();
+var countDownDate = new Date("Aug 5, 2018 14:00:00").getTime();
 var x = setInterval(function() {
     var now = new Date().getTime();
     var distance = countDownDate - now;

@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 import * as firebase from 'firebase';
 import { RegisterPage } from '../register/register';
 import { PaymentsPage } from '../payments/payments';
+import { PaymentsMPage } from '../payments-m/payments-m';
+import { SignUpMPage } from '../MobileVersion/sign-up-m/sign-up-m';
 
 
 
@@ -54,7 +56,7 @@ export class ResultsMPage {
     loading.dismiss();
   }
   gtPayments(){
-    this.navCtrl.setRoot(PaymentsPage);
+    this.navCtrl.setRoot(PaymentsMPage);
   }
 
   getUser(){
@@ -65,7 +67,7 @@ export class ResultsMPage {
 
   signOut(){
     firebase.auth().signOut().then(()=>{
-      this.navCtrl.setRoot(RegisterPage);
+      this.navCtrl.setRoot(SignUpMPage);
     })
   }
 

@@ -4,6 +4,9 @@ import * as firebase from 'firebase';
 import { ResultsPage } from '../results/results';
 import { HomePage } from '../home/home';
 import { RegisterPage } from '../register/register';
+import { SignUpMPage } from '../MobileVersion/sign-up-m/sign-up-m';
+import { HomeMPage } from '../home-m/home-m';
+import { ResultsMPage } from '../results-m/results-m';
 
 @IonicPage()
 @Component({
@@ -24,7 +27,7 @@ export class InstructionsMPage {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
       }else{
-        this.navCtrl.setRoot(RegisterPage);
+        this.navCtrl.setRoot(SignUpMPage);
     }
     });
   }
@@ -38,9 +41,9 @@ export class InstructionsMPage {
 
     this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
       if(!itemSnap.val().Attempted){
-        this.navCtrl.setRoot(HomePage);
+        this.navCtrl.setRoot(HomeMPage);
       }else{
-        this.navCtrl.setRoot(ResultsPage);
+        this.navCtrl.setRoot(ResultsMPage);
       }
     })
     loading.dismiss();

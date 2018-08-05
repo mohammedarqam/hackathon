@@ -4,6 +4,8 @@ import * as firebase from 'firebase';
 import { Slides } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ResultsPage } from '../results/results';
+import { ResultsMPage } from '../results-m/results-m';
+import { SignUpMPage } from '../MobileVersion/sign-up-m/sign-up-m';
 
 
 @Component({
@@ -31,7 +33,7 @@ export class HomeMPage {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
       }else{
-        this.navCtrl.setRoot(RegisterPage);
+        this.navCtrl.setRoot(SignUpMPage);
     }
     });
     this.getQuestions();
@@ -80,7 +82,7 @@ export class HomeMPage {
 
   signOut(){
     firebase.auth().signOut().then(()=>{
-      this.navCtrl.setRoot(RegisterPage);
+      this.navCtrl.setRoot(SignUpMPage);
     })
   }
 
@@ -134,7 +136,7 @@ export class HomeMPage {
       console.log(temp);
       
     }).then(()=>{
-      this.navCtrl.setRoot(ResultsPage);
+      this.navCtrl.setRoot(ResultsMPage);
     })
   }
 }
