@@ -18,6 +18,7 @@ import { LoginMPage } from '../pages/MobileVersion/login-m/login-m';
 import { SignUpMPage } from '../pages/MobileVersion/sign-up-m/sign-up-m';
 import { ReRegisterMPage } from '../pages/MobileVersion/re-register-m/re-register-m';
 import { WaitingMPage } from '../pages/MobileVersion/waiting-m/waiting-m';
+import { PaymentsPage } from '../pages/payments/payments';
 
 firebase.initializeApp({
   apiKey: "AIzaSyC-MuPFFSmsEX8WiR5PiNLea1UUuFEtyY4",
@@ -44,6 +45,7 @@ firebase.initializeApp({
     SignUpMPage,
     ReRegisterMPage,
     WaitingMPage,
+    PaymentsPage,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,7 @@ firebase.initializeApp({
     SignUpMPage,
     ReRegisterMPage,
     WaitingMPage,
+    PaymentsPage,
   ],
   providers: [
     StatusBar,

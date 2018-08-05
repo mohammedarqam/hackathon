@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { RegisterPage } from '../register/register';
+import { PaymentsPage } from '../payments/payments';
 
 @IonicPage()
 @Component({
@@ -10,7 +11,7 @@ import { RegisterPage } from '../register/register';
 })
 export class ResultsPage {
 
-  userRef = firebase.database().ref("AUsers/");
+  userRef = firebase.database().ref("Users/");
   Name : string;
 
   scoreRef = firebase.database().ref("Results").child(firebase.auth().currentUser.uid);
@@ -51,7 +52,7 @@ export class ResultsPage {
     loading.dismiss();
   }
   gtPayments(){
-
+    this.navCtrl.setRoot(PaymentsPage);
   }
 
   getUser(){

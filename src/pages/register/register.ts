@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import { WaitingPage } from '../waiting/waiting';
 import { LoginPage } from '../login/login';
 import moment from 'moment';
+import { InstructionsPage } from '../instructions/instructions';
 
 
 
@@ -101,7 +102,7 @@ export class RegisterPage {
                   TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
                 }).then(()=>{
                   if(firebase.auth().currentUser){
-                  this.navCtrl.setRoot(WaitingPage);
+                  this.navCtrl.setRoot(InstructionsPage);
                   }
                   loading.dismiss();
                 });

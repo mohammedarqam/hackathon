@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import * as firebase from'firebase';
 import { WaitingPage } from '../waiting/waiting';
 import moment from 'moment';
+import { InstructionsPage } from '../instructions/instructions';
 
 @IonicPage()
 @Component({
@@ -62,7 +63,7 @@ export class ReRegisterPage {
       Platform : 'Desktop',
       TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
     }).then(()=>{
-      this.navCtrl.setRoot(WaitingPage);
+      this.navCtrl.setRoot(InstructionsPage);
       loading.dismiss();
     });
 

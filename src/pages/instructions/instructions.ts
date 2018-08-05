@@ -13,7 +13,7 @@ import { RegisterPage } from '../register/register';
 })
 export class InstructionsPage {
 
-  userRef = firebase.database().ref("AUsers/");
+  userRef = firebase.database().ref("Users/");
   actBtn : boolean = false;
 
 

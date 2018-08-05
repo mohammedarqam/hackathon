@@ -9,8 +9,8 @@ ion-grid{
 }
 
 .optns{
-    border: 1px solid map-get($colors,primary) !important ;
-    margin-bottom: 2% !important;
+    border: 3px solid map-get($colors,primary) !important ;
+    margin-bottom: 3% !important;
 }
 .pBar{
     background-color: map-get($colors,primary);
@@ -33,5 +33,11 @@ ion-grid{
 .perc{
     display: inline-flex;
 
+}
+.quesP{
+    font-weight: normal;
+}
+.mainquesP{
+    font-weight: 500;
 }
 }

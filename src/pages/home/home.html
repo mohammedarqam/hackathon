@@ -19,13 +19,18 @@
   <ion-slide *ngFor="let question of questions">
 
     <ion-grid>
-      <ion-row>
-        <ion-col col-8 padding>
-          {{question.Question}}
+      <ion-row class="quesR" >
+        <ion-col col-8>
+          <h3 class="quesP">{{question.Question}}</h3>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4 radio-group [(ngModel)]="ans" >
+        <ion-col push-4 col-4 padding>
+          <h1 class="mainquesP">{{question.MainQues}}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col push-4 col-4 radio-group [(ngModel)]="ans" >
           <ion-item class="optns" >
               <ion-label item-end>{{question.Option1}}</ion-label>
               <ion-radio item-start [value]="question.Option1"></ion-radio>
@@ -43,8 +48,6 @@
               <ion-radio item-start [value]="question.Option4"></ion-radio>
           </ion-item>
         </ion-col>
-        <ion-col col-6>
-        </ion-col>
       </ion-row>
     </ion-grid>
 
@@ -60,8 +63,8 @@
 
 <ion-footer>
   <ion-item>
-  <button ion-button item-end large (click)="sendAns()" [disabled]="!ans" *ngIf="curIndex != questions.length"  outline>Continue</button>
-  <button ion-button item-end large (click)="finish()" [disabled]="!ans" outline *ngIf="curIndex == questions.length">Finish</button>
+  <button ion-button item-end large (click)="sendAns()" [disabled]="!ans" *ngIf="curIndex != questions.length"  >Continue</button>
+  <button ion-button item-end large (click)="finish()" [disabled]="!ans"  *ngIf="curIndex == questions.length">Finish</button>
   </ion-item>
 </ion-footer>
 

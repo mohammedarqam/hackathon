@@ -127,10 +127,10 @@ export class HomePage {
     this.ans = '';
   }
   finish(){
-    firebase.database().ref("AUsers/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
+    firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
       var temp = itemSnap.val();
       temp.Attempted = true;
-      firebase.database().ref("AUsers/").child(firebase.auth().currentUser.uid).set(temp);
+      firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).set(temp);
       console.log(temp);
       
     }).then(()=>{

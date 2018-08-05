@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import * as firebase from 'firebase';
 import { WaitingPage } from '../waiting/waiting';
 import { RegisterPage } from '../register/register';
+import { InstructionsPage } from '../instructions/instructions';
 
 
 
@@ -22,7 +23,7 @@ export class LoginPage {
   public alertCtrl:AlertController) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.navCtrl.setRoot(WaitingPage);
+        this.navCtrl.setRoot(InstructionsPage);
       }else{
     }
     });
@@ -61,7 +62,7 @@ export class LoginPage {
             handler: data => {
               confirmationResult.confirm(data.confirmationCode)
               .then(()=>{
-                this.navCtrl.setRoot(WaitingPage);
+                this.navCtrl.setRoot(InstructionsPage);
               
               }).catch(function (error) {
                 alert("Wrong Verification Code");
