@@ -63,7 +63,7 @@ export class ReRegisterPage {
       Platform : 'Desktop',
       TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
     }).then(()=>{
-      this.navCtrl.setRoot(InstructionsPage);
+      this.navCtrl.setRoot(WaitingPage);
       loading.dismiss();
     });
 

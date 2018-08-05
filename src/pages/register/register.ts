@@ -102,7 +102,7 @@ export class RegisterPage {
                   TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
                 }).then(()=>{
                   if(firebase.auth().currentUser){
-                  this.navCtrl.setRoot(InstructionsPage);
+                  this.navCtrl.setRoot(WaitingPage);
                   }
                   loading.dismiss();
                 });

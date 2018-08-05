@@ -23,7 +23,7 @@ export class LoginPage {
   public alertCtrl:AlertController) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.navCtrl.setRoot(InstructionsPage);
+        this.navCtrl.setRoot(WaitingPage);
       }else{
     }
     });
@@ -62,7 +62,7 @@ export class LoginPage {
             handler: data => {
               confirmationResult.confirm(data.confirmationCode)
               .then(()=>{
-                this.navCtrl.setRoot(InstructionsPage);
+                this.navCtrl.setRoot(WaitingPage);
               
               }).catch(function (error) {
                 alert("Wrong Verification Code");

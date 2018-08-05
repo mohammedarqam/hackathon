@@ -1,28 +1,27 @@
-
 <ion-content padding class="Qualified" >
 
-    <button color="whiter" class="signOut" large (click)="signOut()" clear ion-button >Log In as Another User</button>
+  <button color="whiter" class="signOut" large (click)="signOut()" clear ion-button >Log In as Another User</button>
 
-  <ion-slides  >
-    <ion-slide>
-      <ion-card class="Qualified">
-        <ion-card-content>
-          <ion-card-title  >
-            <h1 class="tet"> Dear {{Name}}</h1>
-          </ion-card-title>
-          <ion-card-title  >
-            <h1 class="tet"> Your Score  : {{score}}</h1>
-          </ion-card-title>
-          <ion-card-title>
-            <h1 class="qual" >You are {{status}}</h1>
-          </ion-card-title>
-          <ion-card-title *ngIf="status!='Qualified'" >
-            <h1 class="qual" >Better Luck Next Time</h1>
-          </ion-card-title>
-          <button ion-button large color="danger" *ngIf="status=='Qualified'" (click)="gtPayments()" >Proceed to Second Round</button>
-        </ion-card-content>
-      </ion-card>
-    </ion-slide>
-  </ion-slides>
+<ion-slides  >
+  <ion-slide>
+    <ion-card class="Qualified">
+      <ion-card-content>
+        <ion-card-title  >
+          <h1 class="tet"> Dear {{Name}}</h1>
+        </ion-card-title>
+        <ion-card-title  >
+          <h1 class="tet"> Your Score  : {{score}}</h1>
+        </ion-card-title>
+        <ion-card-title>
+          <h1 class="qual" >You are {{status}}</h1>
+        </ion-card-title>
+        <ion-card-title *ngIf="status!='Qualified'" >
+          <h1 class="qual" >Better Luck Next Time</h1>
+        </ion-card-title>
+        <button ion-button large color="danger" *ngIf="status=='Qualified'" (click)="gtPayments()" >Proceed to Second Round</button>
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
+</ion-slides>
 
 </ion-content>

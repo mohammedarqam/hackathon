@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ResultsPage } from './results';
+import { PaymentsMPage } from './payments-m';
 
 @NgModule({
   declarations: [
-    ResultsPage,
+    PaymentsMPage,
   ],
   imports: [
-    IonicPageModule.forChild(ResultsPage),
+    IonicPageModule.forChild(PaymentsMPage),
   ],
 })
-export class ResultsPageModule {}
+export class PaymentsMPageModule {}
