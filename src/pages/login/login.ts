@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import { WaitingPage } from '../waiting/waiting';
 import { RegisterPage } from '../register/register';
 import { InstructionsPage } from '../instructions/instructions';
+import { HomePage } from '../home/home';
 
 
 
@@ -23,7 +24,7 @@ export class LoginPage {
   public alertCtrl:AlertController) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.navCtrl.setRoot(WaitingPage);
+        this.navCtrl.setRoot(HomePage);
       }else{
     }
     });
@@ -62,7 +63,7 @@ export class LoginPage {
             handler: data => {
               confirmationResult.confirm(data.confirmationCode)
               .then(()=>{
-                this.navCtrl.setRoot(WaitingPage);
+                this.navCtrl.setRoot(HomePage);
               
               }).catch(function (error) {
                 alert("Wrong Verification Code");

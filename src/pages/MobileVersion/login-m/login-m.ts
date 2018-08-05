@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import * as firebase from 'firebase';
 import { WaitingMPage } from '../waiting-m/waiting-m';
 import { SignUpMPage } from '../sign-up-m/sign-up-m';
+import { HomeMPage } from '../../home-m/home-m';
 
 @IonicPage()
 @Component({
@@ -18,7 +19,7 @@ export class LoginMPage {
   public alertCtrl:AlertController) {
   firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.navCtrl.setRoot(WaitingMPage);
+        this.navCtrl.setRoot(HomeMPage);
       }else{
     }
     });
@@ -57,7 +58,7 @@ export class LoginMPage {
             handler: data => {
               confirmationResult.confirm(data.confirmationCode)
               .then(()=>{
-                this.navCtrl.setRoot(WaitingMPage);
+                this.navCtrl.setRoot(HomeMPage);
               
               }).catch(function (error) {
                 alert("Wrong Verification Code");

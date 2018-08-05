@@ -4,6 +4,7 @@ import { LoginMPage } from '../login-m/login-m';
 import { WaitingMPage } from '../waiting-m/waiting-m';
 import * as firebase from 'firebase';
 import moment from 'moment';
+import { HomeMPage } from '../../home-m/home-m';
 
 
 @IonicPage()
@@ -29,7 +30,7 @@ export class SignUpMPage {
   public alertCtrl:AlertController) {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.navCtrl.setRoot(WaitingMPage);
+        this.navCtrl.setRoot(HomeMPage);
       }else{
     }
     });
@@ -99,7 +100,7 @@ export class SignUpMPage {
                   TimeStamp : moment().format('MMMM Do YYYY, h:mm:ss a')
                 }).then(()=>{
                   if(firebase.auth().currentUser){
-                  this.navCtrl.setRoot(WaitingMPage);
+                  this.navCtrl.setRoot(HomeMPage);
                   }
                   loading.dismiss();
                 });
