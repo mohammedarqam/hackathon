@@ -1,18 +1,31 @@
-<!--
-  Generated template for the InstructionsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>Instructions</ion-title>
-  </ion-navbar>
-
-</ion-header>
+<ion-content padding  >
 
 
-<ion-content padding>
+<ion-slides>
+  <ion-slide>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title class="whit" >
+          <h1>Instructions</h1>
+        </ion-card-title>
+          <h2>1. You can attempt this Test only once</h2>
+          <h2>2. You cannot go back to the previous Question</h2>
+          <h2>3. If you qualify this round you will be informed about the Second Round</h2>
+          <h2>4. You will have to pay an Amount of Rs.150/- to enter the Second round.</h2>
+          <h2>5. Prizes will be distributed among Top 5 Contenders</h2>
+          <h2>6. Participation Certificates will be Emailed to you within 2 Working Days.</h2>
+          <h2>7. By Clicking this button , you agree to our Terms and Conditions</h2>
+          <button ion-button  (click)="getUser()" large>Get Started</button>
+      </ion-card-content>
+    </ion-card>
+  </ion-slide>
+</ion-slides>
+
 
 </ion-content>

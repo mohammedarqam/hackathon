@@ -3,6 +3,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { Slides } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
+import { ResultsPage } from '../results/results';
 
 
 @Component({
@@ -16,6 +17,12 @@ export class HomePage {
   questions : Array<any> = [];
   curIndex : number = 1;
   allSlides : number ;
+  ans : string;
+  anser : string;
+  keya : string;
+
+  evryQuesRef = firebase.database().ref("EveryQuestion");
+  ansRef = firebase.database().ref("Results");
 
   constructor(
   public navCtrl: NavController,
@@ -35,6 +42,12 @@ export class HomePage {
     document.getElementById("pBarId").style.width = '0';
   }
 
+  getAns(){
+    var slidee = this.slides.getActiveIndex();
+    this.keya =  this.questions[slidee].key;
+    this.anser = this.questions[slidee].Answer;
+  }
+
   getQuestions(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
@@ -44,7 +57,9 @@ export class HomePage {
     this.quesRef.once('value',itemSnapshot=>{
       this.questions = [];
       itemSnapshot.forEach(itemSnap=>{
-        this.questions.push(itemSnap.val());
+        var temp = itemSnap.val();
+        temp.key = itemSnap.key;
+        this.questions.push(temp);
         this.allSlides = this.questions.length;
       })
     }).then(()=>{
@@ -59,6 +74,7 @@ export class HomePage {
     var bar = document.getElementById("pBarId");
     bar.style.width = wid.toString()+"%" ;
     bar.style.transition = "width 0.5s ease";
+    this.getAns();
   }
 
 
@@ -69,16 +85,58 @@ export class HomePage {
   }
 
 
-  slidePrev() {
-    this.slides.lockSwipes(false);
-    this.slides.slidePrev(500);
-    this.slides.lockSwipes(true);
+
+  sendAns(){
+    if(this.ans ===this.anser){
+      this.evryQuesRef.child(this.keya).child(firebase.auth().currentUser.uid).transaction(function(cCata){
+        var temp = "Correct";
+        return temp;
+      })
+
+
+      this.ansRef.child(firebase.auth().currentUser.uid).child("Score").transaction(function(currentData){
+        if(currentData==null){
+          return 1;
+        }else{
+          var temp = parseFloat(currentData);
+          return temp+1;
+        }
+      });
+    }else{
+      this.evryQuesRef.child(this.keya).child(firebase.auth().currentUser.uid).transaction(function(cCata){
+        var temp = "Incorrect";
+        return temp;
+      })
+      this.ansRef.child(firebase.auth().currentUser.uid).child("Score").transaction(function(currentData){
+        if(currentData==null){
+          return 0;
+        }else{
+          var temp = parseFloat(currentData);
+          return temp;
+        }
+      });
+
+    }
+    this.slideNext();
   }
 
   slideNext() {
     this.slides.lockSwipes(false);
     this.slides.slideNext(500);
     this.slides.lockSwipes(true);
+    this.ans = '';
   }
+  finish(){
+    firebase.database().ref("AUsers/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
+      var temp = itemSnap.val();
+      temp.Attempted = true;
+      firebase.database().ref("AUsers/").child(firebase.auth().currentUser.uid).set(temp);
+      console.log(temp);
+      
+    }).then(()=>{
+      this.navCtrl.setRoot(ResultsPage);
+    })
+  }
+
 
 }

@@ -6,6 +6,8 @@ import { RegisterPage } from '../pages/register/register';
 import { SignUpMPage } from '../pages/MobileVersion/sign-up-m/sign-up-m';
 import { LoginMPage } from '../pages/MobileVersion/login-m/login-m';
 import { WaitingMPage } from '../pages/MobileVersion/waiting-m/waiting-m';
+import { HomePage } from '../pages/home/home';
+import { InstructionsPage } from '../pages/instructions/instructions';
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +18,7 @@ export class MyApp {
   constructor(platform: Platform,  public plt : Platform,statusBar: StatusBar) {
     platform.ready().then(() => {
       if(this.plt.is("core")){
-        this.rootPage = RegisterPage;
+        this.rootPage = InstructionsPage;
       }else{
         this.rootPage = WaitingMPage;
       }

@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import * as firebase from 'firebase';
+import { ResultsPage } from '../results/results';
+import { HomePage } from '../home/home';
+import { RegisterPage } from '../register/register';
 
-/**
- * Generated class for the InstructionsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +13,37 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InstructionsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  userRef = firebase.database().ref("AUsers/");
+  actBtn : boolean = false;
+
+
+  constructor(
+  public navCtrl: NavController, 
+  public loadingCtrl : LoadingController,
+  public navParams: NavParams) {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+      }else{
+        this.navCtrl.setRoot(RegisterPage);
+    }
+    });
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InstructionsPage');
+
+  getUser(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
+    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
+      if(!itemSnap.val().Attempted){
+        this.navCtrl.setRoot(HomePage);
+      }else{
+        this.navCtrl.setRoot(ResultsPage);
+      }
+    })
+    loading.dismiss();
   }
 
 }

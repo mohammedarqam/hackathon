@@ -60,9 +60,8 @@
 
 <ion-footer>
   <ion-item>
-  <button ion-button item-start large (click)="slidePrev()" *ngIf="curIndex != 1" outline>Previous</button>
-  <button ion-button item-end large (click)="slideNext()" *ngIf="curIndex != questions.length"  outline>Continue</button>
-  <button ion-button item-end large (click)="finish()" outline *ngIf="curIndex == questions.length">Finish</button>
+  <button ion-button item-end large (click)="sendAns()" [disabled]="!ans" *ngIf="curIndex != questions.length"  outline>Continue</button>
+  <button ion-button item-end large (click)="finish()" [disabled]="!ans" outline *ngIf="curIndex == questions.length">Finish</button>
   </ion-item>
 </ion-footer>
 

@@ -1,3 +1,31 @@
 page-results {
+.Qualified{
+    background-color: map-get($colors,primary);
+}
+.tet{
+    color: white;
+}
+.qual{
+    color: white;
+    font-size: 3.2rem !important;
+}
+h1{
+    font-size: 2.8rem !important;
+    font-weight: 600 !important ;
+}
+  h2{
+      font-size: 2rem !important;
+  }
+  .card {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 50%;
+  }
 
+  .signOut{
+      float: right;
+  }
 }
