@@ -1,3 +1,20 @@
 page-results-m {
+    .Qualified{
+        background-color: map-get($colors,primary);
+    }
+    .tet{
+        color: white;
+    }
+    .qual{
+        color: white;
+        font-size: 3.2rem !important;
+    }
+    h1{
+        font-size: 2.8rem !important;
+        font-weight: 600 !important ;
+    }
+      h2{
+          font-size: 2rem !important;
+      }
 
 }

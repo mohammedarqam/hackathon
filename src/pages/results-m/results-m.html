@@ -1,18 +1,29 @@
-<!--
-  Generated template for the ResultsMPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>resultsM</ion-title>
+  <ion-navbar color="primary" >
+    <ion-title>Arqam.Tech</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="Qualified" >
+  <ion-card class="Qualified">
+    <ion-card-content>
+      <ion-card-title  >
+        <h1 class="tet"> Dear {{Name}}</h1>
+      </ion-card-title>
+      <ion-card-title  >
+        <h1 class="tet"> Your Score  : {{score}}</h1>
+      </ion-card-title>
+      <ion-card-title>
+        <h1 class="qual" >You are {{status}}</h1>
+      </ion-card-title>
+      <ion-card-title *ngIf="status!='Qualified'" >
+        <h1 class="qual" >Better Luck Next Time</h1>
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>
+<ion-footer>
+  <button ion-button large color="danger" *ngIf="status=='Qualified'" (click)="gtPayments()" >Proceed to Second Round</button>
+</ion-footer>

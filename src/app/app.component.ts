@@ -3,12 +3,10 @@ import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { WaitingMPage } from '../pages/MobileVersion/waiting-m/waiting-m';
-import { InstructionsPage } from '../pages/instructions/instructions';
-import { HomePage } from '../pages/home/home';
-import { PaymentsPage } from '../pages/payments/payments';
-import { WaitingPage } from '../pages/waiting/waiting';
-import { ReRegisterPage } from '../pages/re-register/re-register';
+import { InstructionsMPage } from '../pages/instructions-m/instructions-m';
 import { RegisterPage } from '../pages/register/register';
+import { ResultsMPage } from '../pages/results-m/results-m';
+import { PaymentsMPage } from '../pages/payments-m/payments-m';
 
 @Component({
   templateUrl: 'app.html'
@@ -21,7 +19,7 @@ export class MyApp {
       if(this.plt.is("core")){
         this.rootPage = RegisterPage;
       }else{
-        this.rootPage = WaitingMPage;
+        this.rootPage = PaymentsMPage;
       }
 
       statusBar.styleDefault();
