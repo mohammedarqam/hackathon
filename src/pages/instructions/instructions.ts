@@ -27,6 +27,7 @@ export class InstructionsPage {
         this.navCtrl.setRoot(RegisterPage);
     }
     });
+    this.getUser();
   }
 
 
@@ -37,10 +38,10 @@ export class InstructionsPage {
     loading.present();
 
     this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      if(!itemSnap.val().Attempted){
-        this.navCtrl.setRoot(HomePage);
-      }else{
+      if(itemSnap.val().Attempted){
         this.navCtrl.setRoot(ResultsPage);
+      }else{
+        this.navCtrl.setRoot(HomePage);
       }
     })
     loading.dismiss();

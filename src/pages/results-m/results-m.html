@@ -11,19 +11,13 @@
       <ion-card-title  >
         <h1 class="tet"> Dear {{Name}}</h1>
       </ion-card-title>
-      <ion-card-title  >
-        <h1 class="tet"> Your Score  : {{score}}</h1>
-      </ion-card-title>
       <ion-card-title>
-        <h1 class="qual" >You are {{status}}</h1>
-      </ion-card-title>
-      <ion-card-title *ngIf="status!='Qualified'" >
-        <h1 class="qual" >Better Luck Next Time</h1>
+        <h1 class="qual" >You are Qualified</h1>
       </ion-card-title>
     </ion-card-content>
   </ion-card>
 
 </ion-content>
 <ion-footer>
-  <button ion-button large color="danger" *ngIf="status=='Qualified'" (click)="gtPayments()" >Proceed to Second Round</button>
+  <button ion-button large color="danger"  (click)="gtPayments()" >Proceed to Second Round</button>
 </ion-footer>

@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { RegisterPage } from '../register/register';
-import { PaymentsPage } from '../payments/payments';
 import { PaymentsMPage } from '../payments-m/payments-m';
 import { SignUpMPage } from '../MobileVersion/sign-up-m/sign-up-m';
 

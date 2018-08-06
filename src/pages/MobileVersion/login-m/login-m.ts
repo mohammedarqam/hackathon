@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { WaitingMPage } from '../waiting-m/waiting-m';
 import { SignUpMPage } from '../sign-up-m/sign-up-m';
 import { HomeMPage } from '../../home-m/home-m';
 

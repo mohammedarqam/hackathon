@@ -4,7 +4,6 @@ import * as firebase from 'firebase';
 import { WaitingPage } from '../waiting/waiting';
 import { LoginPage } from '../login/login';
 import moment from 'moment';
-import { InstructionsPage } from '../instructions/instructions';
 import { HomePage } from '../home/home';
 
 

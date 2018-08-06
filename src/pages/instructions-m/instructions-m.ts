@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
-import { ResultsPage } from '../results/results';
-import { HomePage } from '../home/home';
-import { RegisterPage } from '../register/register';
 import { SignUpMPage } from '../MobileVersion/sign-up-m/sign-up-m';
 import { HomeMPage } from '../home-m/home-m';
 import { ResultsMPage } from '../results-m/results-m';
@@ -30,6 +27,7 @@ export class InstructionsMPage {
         this.navCtrl.setRoot(SignUpMPage);
     }
     });
+    this.getUser();
   }
 
 
@@ -40,10 +38,10 @@ export class InstructionsMPage {
     loading.present();
 
     this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      if(!itemSnap.val().Attempted){
-        this.navCtrl.setRoot(HomeMPage);
-      }else{
+      if(itemSnap.val().Attempted){
         this.navCtrl.setRoot(ResultsMPage);
+      }else{
+        this.navCtrl.setRoot(HomeMPage);
       }
     })
     loading.dismiss();

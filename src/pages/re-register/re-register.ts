@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, AlertController, LoadingController
 import * as firebase from'firebase';
 import { WaitingPage } from '../waiting/waiting';
 import moment from 'moment';
-import { InstructionsPage } from '../instructions/instructions';
 
 @IonicPage()
 @Component({

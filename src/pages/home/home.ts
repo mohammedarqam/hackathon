@@ -4,6 +4,7 @@ import * as firebase from 'firebase';
 import { Slides } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ResultsPage } from '../results/results';
+import { PaymentsPage } from '../payments/payments';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class HomePage {
   ans : string;
   anser : string;
   keya : string;
+  userRef = firebase.database().ref("Users/");
 
   evryQuesRef = firebase.database().ref("EveryQuestion");
   ansRef = firebase.database().ref("Results");
@@ -34,6 +36,7 @@ export class HomePage {
         this.navCtrl.setRoot(RegisterPage);
     }
     });
+    this.getUser();
     this.getQuestions();
   }
 
@@ -42,6 +45,21 @@ export class HomePage {
     document.getElementById("pBarId").style.width = '0';
   }
 
+  getUser(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
+    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
+      if(itemSnap.val().Attempted){
+        this.navCtrl.setRoot(ResultsPage);
+      }else{
+        this.navCtrl.setRoot(HomePage);
+      }
+    })
+    loading.dismiss();
+  }
   getAns(){
     var slidee = this.slides.getActiveIndex();
     this.keya =  this.questions[slidee].key;
@@ -127,6 +145,11 @@ export class HomePage {
     this.ans = '';
   }
   finish(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
     firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
       var temp = itemSnap.val();
       temp.Attempted = true;
@@ -135,6 +158,7 @@ export class HomePage {
       
     }).then(()=>{
       this.navCtrl.setRoot(ResultsPage);
+      loading.dismiss();
     })
   }
 

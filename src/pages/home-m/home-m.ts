@@ -2,8 +2,6 @@ import { Component,ViewChild } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { Slides } from 'ionic-angular';
-import { RegisterPage } from '../register/register';
-import { ResultsPage } from '../results/results';
 import { ResultsMPage } from '../results-m/results-m';
 import { SignUpMPage } from '../MobileVersion/sign-up-m/sign-up-m';
 
@@ -25,6 +23,7 @@ export class HomeMPage {
 
   evryQuesRef = firebase.database().ref("EveryQuestion");
   ansRef = firebase.database().ref("Results");
+  userRef = firebase.database().ref("Users/");
 
   constructor(
   public navCtrl: NavController,
@@ -36,7 +35,23 @@ export class HomeMPage {
         this.navCtrl.setRoot(SignUpMPage);
     }
     });
+    this.getUser();
     this.getQuestions();
+  }
+  getUser(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+
+    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
+      if(itemSnap.val().Attempted){
+        this.navCtrl.setRoot(ResultsMPage);
+      }else{
+        this.navCtrl.setRoot(HomeMPage);
+      }
+    })
+    loading.dismiss();
   }
 
   ionViewDidLoad(){
@@ -129,6 +144,10 @@ export class HomeMPage {
     this.ans = '';
   }
   finish(){
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
     firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
       var temp = itemSnap.val();
       temp.Attempted = true;
@@ -137,6 +156,7 @@ export class HomeMPage {
       
     }).then(()=>{
       this.navCtrl.setRoot(ResultsMPage);
+      loading.dismiss();
     })
   }
 }

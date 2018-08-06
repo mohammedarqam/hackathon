@@ -9,7 +9,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PaymentsPage {
 
-  typ : string = "paytm";
+  typ : string;
 
   constructor(
   public navCtrl: NavController, 
