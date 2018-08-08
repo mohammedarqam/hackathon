@@ -43,15 +43,13 @@ export class HomeMPage {
       content: 'Please wait...'
     });
     loading.present();
-
-    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      if(itemSnap.val().Attempted){
+    this.userRef.child(firebase.auth().currentUser.uid).child("Attempted").once('value',itemSnap=>{
+      if(itemSnap.exists()){
         this.navCtrl.setRoot(ResultsMPage);
-      }else{
-        this.navCtrl.setRoot(HomeMPage);
       }
-    })
+   }).then(()=>{
     loading.dismiss();
+   })
   }
 
   ionViewDidLoad(){
@@ -81,8 +79,8 @@ export class HomeMPage {
       })
     }).then(()=>{
       this.slideChanged();
-      loading.dismiss();
     })
+    loading.dismiss();
   }
 
   slideChanged() {
@@ -138,10 +136,10 @@ export class HomeMPage {
   }
 
   slideNext() {
+    this.ans = '';
     this.slides.lockSwipes(false);
     this.slides.slideNext(500);
     this.slides.lockSwipes(true);
-    this.ans = '';
   }
   finish(){
     let loading = this.loadingCtrl.create({
@@ -149,13 +147,31 @@ export class HomeMPage {
     });
     loading.present();
     firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      var temp = itemSnap.val();
-      temp.Attempted = true;
-      firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).set(temp);
-      console.log(temp);
-      
-    }).then(()=>{
-      this.navCtrl.setRoot(ResultsMPage);
+      if(itemSnap.exists()){
+
+      var item = itemSnap.val();
+      item.Attempted = "true";
+      firebase.database().ref("Users/").child(firebase.auth().currentUser.uid)
+      .set(item).then(()=>{
+        this.navCtrl.setRoot(ResultsMPage);
+        loading.dismiss();
+      }).catch(()=>{
+        loading.dismiss();
+      });
+
+    }else{
+      firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).set({
+        Attempted : "true"
+      }).then(()=>{
+        this.navCtrl.setRoot(ResultsMPage);
+        loading.dismiss();
+      }).catch(()=>{
+        loading.dismiss();
+      })
+    }
+
+
+    }).catch(()=>{
       loading.dismiss();
     })
   }

@@ -37,9 +37,9 @@ export class InstructionsPage {
     });
     loading.present();
 
-    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      if(itemSnap.val().Attempted){
-        this.navCtrl.setRoot(ResultsPage);
+    this.userRef.child(firebase.auth().currentUser.uid).child("Attempted").once('value',itemSnap=>{
+      if(itemSnap.exists()){
+        this.navCtrl.setRoot(ResultsPage)
       }else{
         this.navCtrl.setRoot(HomePage);
       }

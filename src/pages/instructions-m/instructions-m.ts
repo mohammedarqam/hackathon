@@ -37,9 +37,9 @@ export class InstructionsMPage {
     });
     loading.present();
 
-    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      if(itemSnap.val().Attempted){
-        this.navCtrl.setRoot(ResultsMPage);
+    this.userRef.child(firebase.auth().currentUser.uid).child("Attempted").once('value',itemSnap=>{
+      if(itemSnap.exists()){
+        this.navCtrl.setRoot(ResultsMPage)
       }else{
         this.navCtrl.setRoot(HomeMPage);
       }

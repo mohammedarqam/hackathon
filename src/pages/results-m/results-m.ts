@@ -14,7 +14,8 @@ import { SignUpMPage } from '../MobileVersion/sign-up-m/sign-up-m';
 export class ResultsMPage {
 
   userRef = firebase.database().ref("Users/");
-  Name : string;
+  Name : string = "User"; 
+  nl = this.Name.length;
 
   scoreRef = firebase.database().ref("Results").child(firebase.auth().currentUser.uid);
   score : number;

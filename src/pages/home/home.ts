@@ -4,7 +4,6 @@ import * as firebase from 'firebase';
 import { Slides } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { ResultsPage } from '../results/results';
-import { PaymentsPage } from '../payments/payments';
 
 
 @Component({
@@ -50,15 +49,13 @@ export class HomePage {
       content: 'Please wait...'
     });
     loading.present();
-
-    this.userRef.child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      if(itemSnap.val().Attempted){
-        this.navCtrl.setRoot(ResultsPage);
-      }else{
-        this.navCtrl.setRoot(HomePage);
+    this.userRef.child(firebase.auth().currentUser.uid).child("Attempted").once('value',itemSnap=>{
+      if(itemSnap.exists()){
+        this.navCtrl.setRoot(ResultsPage)
       }
-    })
+   }).then(()=>{
     loading.dismiss();
+   })
   }
   getAns(){
     var slidee = this.slides.getActiveIndex();
@@ -82,8 +79,8 @@ export class HomePage {
       })
     }).then(()=>{
       this.slideChanged();
-      loading.dismiss();
     })
+    loading.dismiss();
   }
 
   slideChanged() {
@@ -139,28 +136,44 @@ export class HomePage {
   }
 
   slideNext() {
+    this.ans = '';
     this.slides.lockSwipes(false);
     this.slides.slideNext(500);
     this.slides.lockSwipes(true);
-    this.ans = '';
   }
   finish(){
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
     loading.present();
-
     firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).once('value',itemSnap=>{
-      var temp = itemSnap.val();
-      temp.Attempted = true;
-      firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).set(temp);
-      console.log(temp);
-      
-    }).then(()=>{
-      this.navCtrl.setRoot(ResultsPage);
+      if(itemSnap.exists()){
+
+      var item = itemSnap.val();
+      item.Attempted = "true";
+      firebase.database().ref("Users/").child(firebase.auth().currentUser.uid)
+      .set(item).then(()=>{
+        this.navCtrl.setRoot(ResultsPage);
+        loading.dismiss();
+      }).catch(()=>{
+        loading.dismiss();
+      });
+
+    }else{
+      firebase.database().ref("Users/").child(firebase.auth().currentUser.uid).set({
+        Attempted : "true"
+      }).then(()=>{
+        this.navCtrl.setRoot(ResultsPage);
+        loading.dismiss();
+      }).catch(()=>{
+        loading.dismiss();
+      })
+    }
+
+
+    }).catch(()=>{
       loading.dismiss();
     })
   }
-
 
 }

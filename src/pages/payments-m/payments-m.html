@@ -12,21 +12,19 @@
       <ion-card-title>
         Pay through
       </ion-card-title>
-            <button block ion-button (click)="paytmOn()" >Paytm</button>
-            <button ion-button block (click)="tezOn()" >Tez</button> 
-          <a href='https://www.payumoney.com/paybypayumoney/#/82623B6AA36568A03A2CBEEC58E412D6'>
+      <a href='https://www.payumoney.com/paybypayumoney/#/82623B6AA36568A03A2CBEEC58E412D6'>
           
-            <button ion-button block>Pay through Credit/Debit Card</button>
-          
-          </a>
-      <div *ngIf="typ == 'paytm'" >
+        <button ion-button block>Click for Credit/Debit Card</button>
+      
+      </a>
+        <button block ion-button (click)="paytmOn()" >Paytm</button>
         <img src="assets/imgs/Paytm.png" class="paytmCode" />
         <h1> Paytm : 9493726705</h1>
-      </div>
-      <div *ngIf="typ == 'tez'" >
-        <h1 ion-text color="primary" > Tez : mohammedarqam97@okicici</h1>
-        <h1 ion-text color="primary">9493-726-705</h1>
-      </div>
+            <button ion-button block (click)="tezOn()" >Tez</button> 
+            <div  >
+              <h1 ion-text color="primary" > Tez : mohammedarqam97@okicici</h1>
+              <h1 ion-text color="primary">9493-726-705</h1>
+            </div>
       *Send Payments from the Phone Number used to register Hackathon
     </ion-card-content>
   </ion-card>
